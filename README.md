@@ -45,6 +45,8 @@ The adapter will be automatically connected to the EASE VM and made available fo
 
 Once you have installed EASE and configured the USB device filters to automatically connect the external adapters to the EASE VM, you can choose the adapter from the _Scan Mode_ menu in the WiFi Explorer Pro's toolbar.
 
+![WiFi Explorer Pro's Toolbar](../master/images/wifiexplorerpro-toolbar.png "WiFi Explorer Pro's Toolbar")
+
 ## Troubleshooting
 
 If the adapter doesn't appear up in WiFi Explorer Pro, make sure the EASE VM is running. You can check the status of the VM in VirtualBox or by using the Vagrant CLI.
