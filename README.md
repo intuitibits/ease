@@ -38,7 +38,7 @@ External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's 
 
 ![USB Device Filters](../master/images/usb-device-filters.png "USB Device Filters")
 
-5. Click OK, then unplug and plug back in the adapter.
+5. Click OK, then **unplug and plug back in the adapter.**
 
 The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro. Repeat the steps above for every adapter you want to use with EASE.
 
