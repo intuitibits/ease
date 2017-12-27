@@ -1,0 +1,53 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          ease
+# Required-Start:    $syslog $network
+# Required-Stop:     $syslog $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: External Adapter Support Environment
+### END INIT INFO
+#
+# Author:	Adrian Granados <adrian@adriangranados.com>
+#
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+DAEMON=/usr/bin/python
+DAEMON_ARGS=/usr/local/bin/ease
+PIDFILE=/var/run/ease.pid
+
+test -x $DAEMON || exit 0
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting EASE" "ease"
+    if start-stop-daemon --start --quiet --background --make-pidfile --pidfile $PIDFILE --exec $DAEMON -- $DAEMON_ARGS; then
+      log_end_msg 0 || true
+    else
+      log_end_msg 1 || true
+    fi
+    ;;	
+  stop)
+   log_daemon_msg "Stopping EASE" "ease"
+   if start-stop-daemon --stop --quiet --pidfile $PIDFILE; then
+     log_end_msg 0 || true
+   else
+     log_end_msg 1 || true
+   fi
+   ;;
+  force-reload|restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+    status_of_proc -p $PIDFILE $DAEMON ease && exit 0 || exit $?
+    ;;
+  *)
+    echo "Usage: /etc/init.d/ease {start|stop|restart|force-reload|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
