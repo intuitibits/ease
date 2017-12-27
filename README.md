@@ -6,7 +6,7 @@ EASE is basically a lightweight Debian VM that's been customized to leverage the
 
 EASE supports multiple adapters and the installation is fairly straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning.
 
-## What External Adapters are Supported?
+## Supported External Adapters
 
 EASE can work with Linux-compatible external USB adapters that support monitor mode, however, only a few adapters have been tested:
 
