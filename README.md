@@ -2,7 +2,7 @@
 
 The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro](https://www.adriangranados.com/apps/wifi-explorer) to use certain external USB adapters for Wi-Fi scanning in macOS. Adapters must be Linux-compatible and support monitor mode.
 
-EASE is basically a lightweight Debian VM that's been customized to leverage the [remote sensor](https://github.com/adriangranados/wifiexplorer-sensor) functionality to automatically configure an external Wi-Fi adapter as a pseudo-local sensor. These pseudo-local sensors are listed in WiFi Explorer Pro separately from remote sensors, but they work in the same manner.
+EASE is basically a lightweight Debian VM that's been customized to leverage the [remote sensor](https://github.com/adriangranados/wifiexplorer-sensor) functionality to automatically configure an external Wi-Fi adapter as a pseudo-local sensor. These pseudo-local sensors are listed in WiFi Explorer Pro separately from remote sensors, but they work in the same manner. 
 
 EASE supports multiple adapters and the installation is fairly straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning.
 
