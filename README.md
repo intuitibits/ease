@@ -49,11 +49,12 @@ Once you have installed EASE and configured the USB device filters to automatica
 
 ## Troubleshooting
 
-If the adapter doesn't appear up in WiFi Explorer Pro, make sure the EASE VM is running. You can check the status of the VM in VirtualBox or by using the Vagrant CLI.
+If the adapter doesn't appear up in WiFi Explorer Pro:
+* Make sure you have unplugged and plugged back in the adapter after adding the USB device filter in VirtualBox.
+* Make sure the EASE VM is running. You can check the status of the VM in VirtualBox or by using the Vagrant CLI. If the EASE VM is not running, simple type _vagrant up_. You can stop the EASE VM by typing _vagrant pause_.
 ```bash
 cd <directory containing the EASE Vagrantfile>
 vagrant status
 ```
-If the EASE VM is not running, simple type _vagrant up_. You can stop the EASE VM by typing _vagrant pause_.
-If the adapter still doesn't appear in WiFi Explorer Pro, [contact me](mailto:support@adriangranados.com).
 
+If the adapter still doesn't appear in WiFi Explorer Pro, [contact me](mailto:support@adriangranados.com).
