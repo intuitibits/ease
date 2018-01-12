@@ -52,9 +52,9 @@ WIRELESS_MODULE="mt7662u_sta.ko"
 WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 [ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
   git clone https://github.com/jurobystricky/Netgear-A6210 && \
-  cd Netgear-A6210 && \
-  make && \
-  make install && modprobe mt7662u_sta
+  make -C Netgear-A6210 && \
+  make -C Netgear-A6210 install && \
+  modprobe mt7662u_sta
   rm -rf Netgear-A6210
 )
 
