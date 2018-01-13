@@ -41,7 +41,8 @@ WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
   make -C rtl8812au && \
   mkdir -p $WIRELESS_MODULE_DIR && \
   install -p -m 644 rtl8812au/$WIRELESS_MODULE $WIRELESS_MODULE_DIR && \
-  depmod -a && modprobe 8812au && \
+  depmod -a && \
+  modprobe 8812au
   rm -rf rtl8812au
 )
 
@@ -51,7 +52,7 @@ WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
   git clone https://github.com/shabzy/rtl8814au.git && \
   make -C rtl8814au && \
   make -C rtl8814au install && \
-  modprobe 8814au && \
+  modprobe 8814au
   rm -rf rtl8814au
 )
 
