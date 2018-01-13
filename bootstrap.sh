@@ -4,7 +4,7 @@
 # This script sets up the WiFi Explorer Pro's External Adapter 
 # Support Environment (EASE), which enables support for certain 
 # Linux-compatible external USB Wi-Fi adapters.
-# Version 1.0
+# Version 1.1
 #
 # Copyright (c) 2018 Adrian Granados. All rights reserved.
 #
@@ -43,6 +43,16 @@ WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
   install -p -m 644 rtl8812au/$WIRELESS_MODULE $WIRELESS_MODULE_DIR && \
   depmod -a && modprobe 8812au && \
   rm -rf rtl8812au
+)
+
+WIRELESS_MODULE="8814au.ko"
+WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
+[ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
+  git clone https://github.com/shabzy/rtl8814au.git && \
+  make -C rtl8814au && \
+  make -C rtl8814au install && \
+  modprobe 8814au && \
+  rm -rf rtl8814au
 )
 
 # setup sensor
