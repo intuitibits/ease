@@ -37,11 +37,10 @@ pip install libnl flask psutil
 WIRELESS_MODULE="8812au.ko"
 WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 [ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
-  git clone https://github.com/astsam/rtl8812au.git && \
+  git clone -b v5.1.5 https://github.com/adriangranados/rtl8812au.git && \
+  sed -i '/no-error=date-time/d' rtl8812au/Makefile && \
   make -C rtl8812au && \
-  mkdir -p $WIRELESS_MODULE_DIR && \
-  install -p -m 644 rtl8812au/$WIRELESS_MODULE $WIRELESS_MODULE_DIR && \
-  depmod -a && \
+  make -C rtl8812au install && \
   modprobe 8812au
   rm -rf rtl8812au
 )
@@ -49,7 +48,7 @@ WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 WIRELESS_MODULE="8814au.ko"
 WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 [ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
-  git clone https://github.com/shabzy/rtl8814au.git && \
+  git clone https://github.com/adriangranados/rtl8814au.git && \
   make -C rtl8814au && \
   make -C rtl8814au install && \
   modprobe 8814au
