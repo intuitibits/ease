@@ -22,6 +22,10 @@ Other adapters using the same driver/chipset should work fine. If your device wo
 ## Installation
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) (required to enable USB support in VirtualBox). If you have any of these components already installed, please make sure you're running the latest version.
+1. If __git__ is not installed, type:
+```bash
+xcode-select --install
+```
 1. Install the support environment:
 ```bash
 git clone https://github.com/adriangranados/ease.git
