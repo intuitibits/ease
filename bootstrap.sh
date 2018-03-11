@@ -28,7 +28,7 @@
   apt-get update && \
   touch /etc/sources_updated
 ) && \
-apt-get install -y git lshw wireless-tools iw firmware-ralink firmware-realtek python-pip python-dev scapy tcpdump linux-headers-`uname -r` build-essential
+apt-get install -y git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek python-pip python-dev scapy tcpdump linux-headers-`uname -r` build-essential
 
 # install python libraries
 pip install libnl flask psutil
