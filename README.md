@@ -56,6 +56,10 @@ Once you have installed EASE and configured the USB device filters to automatica
 
 ![WiFi Explorer Pro's Toolbar](../master/images/wifiexplorerpro-toolbar.png "WiFi Explorer Pro's Toolbar")
 
+## Known Issues
+
+* It appears none of the adapters tested with EASE report noise values due to limitations of the driver. In order to produce other metrics, such as SNR, WiFi Explorer Pro will use a default noise floor of -96 dBm.
+
 ## Troubleshooting
 
 If the adapter doesn't appear in WiFi Explorer Pro:
