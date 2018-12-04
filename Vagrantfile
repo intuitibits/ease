@@ -7,6 +7,7 @@ Vagrant.configure(2) do |config|
     vb.name = "EASE"
     vb.memory = "256"
     vb.cpus = "1"
+    vb.default_nic_type = "virtio"
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ["modifyvm", :id, "--usbxhci", "on"]
   end
