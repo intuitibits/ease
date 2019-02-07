@@ -14,6 +14,7 @@ EASE can work with Linux-compatible external USB adapters that support monitor m
 * [ALFA AWUS051NH 802.11a/b/g/n](https://www.amazon.com/Alfa-AWUS051NH-Wireless-Network-9dBi/dp/B003YH1X48/ref=sr_1_1?ie=UTF8&qid=1515526895&sr=8-1&keywords=AWUS051NH)
 * [ALFA AWUS036NHA 802.11b/g/n](https://www.amazon.com/Alfa-AWUS036NHA-Wireless-USB-Adaptor/dp/B004Y6MIXS) - Atheros AR9271
 * [COMFAST CF-912AC](https://www.amazon.com/Comfast-CF-912AC-1200Mbps-802-11ac-Wireless/dp/B00W37XPPK) - Realtek RTL8812AU
+* [Edimax EW-7822UAC AC1200](https://www.amazon.com/gp/product/B00BXAXO7C/ref=ppx_yo_dt_b_asin_title_o01__o00_s00?ie=UTF8&psc=1) - Realtek RTL8812AU 
 * [Edimax EW-7833UAC AC1750](https://www.amazon.com/gp/product/B01G51FBF6/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1) - Realtek RTL8814AU
 * [Odroid Wi-Fi Module 4](https://ameridroid.com/products/wifi-module-4) - MediaTek (Ralink) RT5572N
 * [Odroid Wi-Fi Module 5](https://ameridroid.com/products/wifi-module-5) - Realtek RTL8812AU
