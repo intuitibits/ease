@@ -38,7 +38,6 @@ WIRELESS_MODULE="8812au.ko"
 WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 [ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
   git clone -b v5.1.5 https://github.com/adriangranados/rtl8812au.git && \
-  sed -i '/no-error=date-time/d' rtl8812au/Makefile && \
   make -C rtl8812au && \
   make -C rtl8812au install && \
   modprobe 8812au
