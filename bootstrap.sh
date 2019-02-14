@@ -4,7 +4,7 @@
 # This script sets up the WiFi Explorer Pro's External Adapter 
 # Support Environment (EASE), which enables support for certain 
 # Linux-compatible external USB Wi-Fi adapters.
-# Version 1.1
+# Version 2.0
 #
 # Copyright (c) 2018 Adrian Granados. All rights reserved.
 #
@@ -28,30 +28,20 @@
   apt-get update && \
   touch /etc/sources_updated
 ) && \
-apt-get install -y git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek python-pip python-dev scapy tcpdump linux-headers-`uname -r` build-essential
+apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python-pip python-dev scapy tcpdump linux-headers-`uname -r` build-essential
 
 # install python libraries
 pip install libnl flask psutil
 
 # build drivers
-WIRELESS_MODULE="8812au.ko"
+WIRELESS_MODULE="88XXau.ko"
 WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 [ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
-  git clone -b v5.1.5 https://github.com/adriangranados/rtl8812au.git && \
+  git clone -b v5.2.20 https://github.com/aircrack-ng/rtl8812au.git && \
   make -C rtl8812au && \
   make -C rtl8812au install && \
-  modprobe 8812au
+  modprobe 88XXau
   rm -rf rtl8812au
-)
-
-WIRELESS_MODULE="8814au.ko"
-WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
-[ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
-  git clone https://github.com/adriangranados/rtl8814au.git && \
-  make -C rtl8814au && \
-  make -C rtl8814au install && \
-  modprobe 8814au
-  rm -rf rtl8814au
 )
 
 # setup sensor
