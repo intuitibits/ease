@@ -2,9 +2,9 @@
 #
 # ease.py
 # External Adapter Support Environment (EASE)
-# Version 1.0
+# Version 2.0
 #
-# Copyright (c) 2018 Adrian Granados. All rights reserved.
+# Copyright (c) 2019 Adrian Granados. All rights reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,39 +36,19 @@ adapters = []
 
 FNULL = open(devnull, 'w')
 
-def find_adapters(json_data):
-    for item in json_data:
+def find_adapters(json_data, json_child_data):
+    for item in json_child_data:
         if item == 'children':
-            for child in json_data['children']:
-                find_adapters(child)
-        elif item == 'description' and json_data['description'] == 'Wireless interface':
-            name = json_data['vendor'] + ' ' + json_data['product']
-            interface = json_data['logicalname']
-            tag = 2000 + int(interface.replace('wlan', ''))
-            port = 26700 + int(interface.replace('wlan', ''))
-
-            found = False
-            for adapter in adapters:
-                if adapter['interface'] == interface:
-                    adapter['last_seen'] = time.time()
-                    found = True
-
-            if not found:
-                try:
-                    subprocess.Popen(["/usr/local/bin/wifiexplorer-sensor", interface, str(port)], stdout=FNULL)
-                    adapter = {
-                        'name': name,
-                        'interface': interface,
-                        'port': port,
-                        'tag': tag,
-                        'last_seen': time.time()
-                    }
-                    adapters.append(adapter)
-                    print "Adding %s" % adapter
-                except OSError, e:
-                    print("Failed to start sensor for adapter %s: %s" % (name, e))
-
-
+            for child in json_child_data['children']:
+                find_adapters(json_data, child)
+        elif item == 'description' and json_child_data['description'] == 'Wireless interface':
+            businfo = json_child_data['businfo']
+            interface = json_child_data['logicalname']
+            add_adapter(json_data, businfo, interface)
+        elif item == 'id' and json_child_data['id'] == 'usb':
+            businfo = json_child_data['businfo']
+            update_adapter(businfo)
+               
 def purge_adapters():
     for adapter in adapters:
         now = time.time()
@@ -82,10 +62,48 @@ def purge_adapters():
                     if cmdline[1] == '/usr/local/bin/wifiexplorer-sensor' and cmdline[2] == adapter['interface'] and cmdline[3] == str(adapter['port']):
                         proc.kill()
 
+def add_adapter(json_data, businfo, interface):
+    for item in json_data:
+        if item == 'children':
+            for child in json_data['children']:
+                add_adapter(child, businfo, interface)
+        elif item == 'id' and json_data['id'] == 'usb':
+            if json_data['businfo'] == businfo:
+                name = json_data['vendor'] + ' ' + json_data['product']
+                tag = 2000 + int(interface.replace('wlan', ''))
+                port = 26700 + int(interface.replace('wlan', ''))
+
+                found = update_adapter(businfo)
+                
+                if not found:
+                    try:
+                        subprocess.Popen(["/usr/local/bin/wifiexplorer-sensor", interface, str(port)], stdout=FNULL)
+                        adapter = {
+                            'name': name,
+                            'businfo': businfo,
+                            'interface': interface,
+                            'port': port,
+                            'tag': tag,
+                            'last_seen': time.time()
+                        }
+                        adapters.append(adapter)
+                        print "Adding %s" % adapter
+                    except OSError, e:
+                        print("Failed to start sensor for adapter %s: %s" % (name, e))
+
+def update_adapter(businfo):
+    found = False
+    for adapter in adapters:
+        if adapter['businfo'] == businfo:
+            adapter['last_seen'] = time.time()
+            found = True
+
+    return found
+
 def run():
     while True:
         json_data = json.loads(subprocess.check_output(["/usr/bin/lshw", "-json"], stderr=FNULL))
-        find_adapters(json_data)
+        find_adapters(json_data, json_data)
         purge_adapters()
         time.sleep(3)
 
@@ -107,3 +125,4 @@ if __name__ == '__main__':
     thread.daemon = True
     thread.start()
     app.run(host='0.0.0.0')
+
