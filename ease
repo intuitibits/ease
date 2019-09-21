@@ -12,7 +12,7 @@
 #
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
-DAEMON=/usr/bin/python
+DAEMON=/usr/bin/python3
 DAEMON_ARGS=/usr/local/bin/ease
 PIDFILE=/var/run/ease.pid
 

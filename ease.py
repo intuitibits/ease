@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # ease.py
 # External Adapter Support Environment (EASE)
-# Version 2.0
+# Version 3.0
 #
 # Copyright (c) 2019 Adrian Granados. All rights reserved.
 #
