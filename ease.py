@@ -53,7 +53,7 @@ def purge_adapters():
     for adapter in adapters:
         now = time.time()
         if now - adapter['last_seen'] > 2.0:
-            print "Removing %s" % adapter
+            print("Removing %s" % adapter)
             adapters.remove(adapter)
             # Kill wifiexplorer-sensor for this adapter
             for proc in psutil.process_iter():
@@ -87,8 +87,8 @@ def add_adapter(json_data, businfo, interface):
                             'last_seen': time.time()
                         }
                         adapters.append(adapter)
-                        print "Adding %s" % adapter
-                    except OSError, e:
+                        print("Adding %s" % adapter)
+                    except OSError as e:
                         print("Failed to start sensor for adapter %s: %s" % (name, e))
 
 def update_adapter(businfo):
@@ -102,7 +102,7 @@ def update_adapter(businfo):
 
 def run():
     while True:
-        json_data = json.loads(subprocess.check_output(["/usr/bin/lshw", "-json"], stderr=FNULL))
+        json_data = json.loads((subprocess.check_output(["/usr/bin/lshw", "-json"], stderr=FNULL)).decode("ascii"))
         find_adapters(json_data, json_data)
         purge_adapters()
         time.sleep(3)
@@ -118,7 +118,7 @@ def not_found(error):
 if __name__ == '__main__':
 
     if geteuid() != 0:
-        print "You need to have root privileges to run this script."
+        print("You need to have root privileges to run this script.")
         exit(-1)
 
     thread = Thread(target = run)

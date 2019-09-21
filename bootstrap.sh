@@ -28,10 +28,10 @@
   apt-get update && \
   touch /etc/sources_updated
 ) && \
-apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python-pip python-dev scapy tcpdump linux-headers-`uname -r` build-essential
+apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python3-pip python3-dev tcpdump linux-headers-`uname -r` build-essential
 
 # install python libraries
-pip install libnl flask psutil
+pip3 install libnl flask psutil scapy
 
 # build drivers
 WIRELESS_MODULE="88XXau.ko"
