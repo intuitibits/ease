@@ -24,7 +24,12 @@
 
 # install packages
 [ -e /etc/sources_updated ] || (\
-  echo "deb http://httpredir.debian.org/debian/ jessie contrib non-free" >> /etc/apt/sources.list && \
+  echo "deb http://httpredir.debian.org/debian/ stretch contrib non-free" >> /etc/apt/sources.list && \
+  echo "
+deb     [check-valid-until=no] http://snapshot.debian.org/archive/debian/20190813T053201Z/ stretch main
+deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian/20190813T053201Z/ stretch main
+deb     [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20190813T053201Z/ stretch/updates main
+deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20190813T053201Z/ stretch/updates main" >> /etc/apt/sources.list.d/snapshots.list && \
   apt-get update && \
   touch /etc/sources_updated
 ) && \
