@@ -31,7 +31,7 @@
 apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python3-pip python3-dev tcpdump linux-headers-`uname -r` build-essential
 
 # install python libraries
-pip3 install flask psutil scapy
+pip3 install flask psutil scapy xmltodict
 
 # build drivers
 WIRELESS_MODULE="88XXau.ko"
