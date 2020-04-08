@@ -4,7 +4,7 @@
 # This script sets up the WiFi Explorer Pro's External Adapter 
 # Support Environment (EASE), which enables support for certain 
 # Linux-compatible external USB Wi-Fi adapters.
-# Version 2.0
+# Version 2.1
 #
 # Copyright (c) 2019 Adrian Granados. All rights reserved.
 #
@@ -24,19 +24,14 @@
 
 # install packages
 [ -e /etc/sources_updated ] || (\
-  echo "deb http://httpredir.debian.org/debian/ stretch contrib non-free" >> /etc/apt/sources.list && \
-  echo "
-deb     [check-valid-until=no] http://snapshot.debian.org/archive/debian/20190813T053201Z/ stretch main
-deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian/20190813T053201Z/ stretch main
-deb     [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20190813T053201Z/ stretch/updates main
-deb-src [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20190813T053201Z/ stretch/updates main" >> /etc/apt/sources.list.d/snapshots.list && \
+  echo "deb http://deb.debian.org/debian/ buster contrib non-free" >> /etc/apt/sources.list && \
   apt-get update && \
   touch /etc/sources_updated
 ) && \
 apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python3-pip python3-dev tcpdump linux-headers-`uname -r` build-essential
 
 # install python libraries
-pip3 install libnl flask psutil scapy
+pip3 install flask psutil scapy
 
 # build drivers
 WIRELESS_MODULE="88XXau.ko"
