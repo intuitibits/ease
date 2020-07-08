@@ -60,9 +60,12 @@ Once you have installed EASE and configured the USB device filters to automatica
 
 ## Known Issues
 
-* It appears none of the adapters tested with EASE report noise values due to limitations of the driver. In order to produce other metrics, such as SNR, WiFi Explorer Pro will use a default noise floor of -96 dBm.
+### Noise measurements
+It appears none of the adapters tested with EASE report noise values due to limitations of the driver. In order to produce other metrics, such as SNR, WiFi Explorer Pro will use a default noise floor of -96 dBm.
 
-* Adapters that require the ath9k_htc driver for the Atheros AR9271 chip (e.g. ALFA AWUS036NHA) don't work with the VirtualBox USB 2.0/3.0 stack. You need to disable USB 2.0/3.0 on the EASE VM as follows:
+### Atheros AR9271 drivers not compatible with VirtualBox USB 2.0/3.0 controllers
+Adapters that require the ath9k_htc driver for the Atheros AR9271 chip (e.g. ALFA AWUS036NHA) don't work with the VirtualBox USB 2.0/3.0 controllers. If you need to use one of these adapters, you must disable USB 2.0/3.0 on the EASE VM as follows:
+
 1. Edit the Vagrantfile and change the following line:
 
 ```bash
