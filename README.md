@@ -70,20 +70,23 @@ Adapters that require the ath9k_htc driver for the Atheros AR9271 chip (e.g. ALF
     ```bash
     vb.customize ["modifyvm", :id, "--usbxhci", "on"]
     ```
-to:
+
+    to:
+    
     ```bash
     vb.customize ["modifyvm", :id, "--usbehci", "off"]
     vb.customize ["modifyvm", :id, "--usbxhci", "off"]
     ```
 
-Note the additional line to disable USB 2.0 (eHCI).
+    Note the additional line to disable USB 2.0 (eHCI).
 
 2. Then, restart the EASE VM:
     ```bash
     vagrant halt
     vagrant up
     ```
-You may need to re-add the USB filters for the adapter as specified in the instructions for attaching USB adapters to the EASE VM.
+    
+    You may need to re-add the USB filters for the adapter as specified in the instructions for attaching USB adapters to the EASE VM.
 
 ## Troubleshooting
 
