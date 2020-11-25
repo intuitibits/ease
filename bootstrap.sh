@@ -4,7 +4,7 @@
 # This script sets up the WiFi Explorer Pro's External Adapter 
 # Support Environment (EASE), which enables support for certain 
 # Linux-compatible external USB Wi-Fi adapters.
-# Version 2.1
+# Version 2.1.1
 #
 # Copyright (c) 2019 Adrian Granados. All rights reserved.
 #
@@ -46,10 +46,10 @@ WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
 
 # setup sensor
 [ -e wifiexplorer-sensor/wifiexplorer-sensor.py ] || (\
-  git clone https://github.com/adriangranados/wifiexplorer-sensor.git > /dev/null 2>&1
+  git clone https://github.com/intuitibits/wifiexplorer-sensor.git > /dev/null 2>&1
 ) && \
 cd wifiexplorer-sensor
-git pull && install -p -m 755 wifiexplorer-sensor.py /usr/local/bin/wifiexplorer-sensor
+git pull && install -p -m 755 wifiexplorer-sensor /usr/local/bin/wifiexplorer-sensor
 cd /home/vagrant
 
 # setup ease
