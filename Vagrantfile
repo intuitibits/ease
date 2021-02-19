@@ -1,12 +1,12 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = "debian/buster64"
+  config.vm.box = "intuitibits/ease"
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vbguest.auto_update = false
   end
   config.vm.provider "virtualbox" do |vb|
     vb.name = "EASE"
-    vb.memory = "256"
-    vb.cpus = "1"
+    vb.memory = "1024"
+    vb.cpus = "2"
     vb.default_nic_type = "virtio"
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ["modifyvm", :id, "--usbxhci", "on"]

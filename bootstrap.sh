@@ -4,9 +4,9 @@
 # This script sets up the WiFi Explorer Pro's External Adapter 
 # Support Environment (EASE), which enables support for certain 
 # Linux-compatible external USB Wi-Fi adapters.
-# Version 2.1.1
+# Version 2.2
 #
-# Copyright (c) 2019 Adrian Granados. All rights reserved.
+# Copyright (c) 2021 Intuitibits LLC. All rights reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,28 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-# install packages
-[ -e /etc/sources_updated ] || (\
-  echo "deb http://deb.debian.org/debian/ buster contrib non-free" >> /etc/apt/sources.list && \
-  apt-get update && \
-  touch /etc/sources_updated
-) && \
-apt-get install -y bc git lshw wireless-tools iw firmware-atheros firmware-ralink firmware-realtek libelf-dev python3-pip python3-dev tcpdump linux-headers-`uname -r` build-essential
-
-# install python libraries
-pip3 install flask psutil scapy xmltodict
-
-# build drivers
-WIRELESS_MODULE="88XXau.ko"
-WIRELESS_MODULE_DIR="/lib/modules/`uname -r`/kernel/drivers/net/wireless"
-[ -e $WIRELESS_MODULE_DIR/$WIRELESS_MODULE ] || (\
-  git clone -b v5.2.20 https://github.com/aircrack-ng/rtl8812au.git && \
-  make -C rtl8812au && \
-  make -C rtl8812au install && \
-  modprobe 88XXau
-  rm -rf rtl8812au
-)
 
 # setup sensor
 [ -e wifiexplorer-sensor/wifiexplorer-sensor.py ] || (\
