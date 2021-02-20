@@ -52,7 +52,7 @@ def find_adapters(json_data, json_child_data):
                 businfo = json_child_data['businfo']
                 interface = json_child_data['logicalname']
                 add_adapter(json_data, businfo, interface)
-            elif item == '@id' and json_child_data['@id'] == 'usb':
+            elif item == '@id' and json_child_data['@id'].startswith('usb'):
                 businfo = json_child_data['businfo']
                 update_adapter(businfo)
                
@@ -77,7 +77,7 @@ def add_adapter(json_data, businfo, interface):
         for item, value in json_data.items():
             if item == 'node':
                 add_adapter(value, businfo, interface)
-            elif item == '@id' and value == 'usb':
+            elif item == '@id' and value.startswith('usb'):
                 if json_data['businfo'] == businfo:
                     name = json_data['vendor'] + ' ' + json_data['product']
                     tag = 2000 + int(interface.replace('wlan', ''))
