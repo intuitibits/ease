@@ -36,7 +36,7 @@ cd ease
 vagrant up
 ```
 
-The installation of the environment will take a few minutes as we need to download a clean Debian image and provision it. Once done, EASE is ready to use and you can proceed to attach your external USB Wi-Fi adapter.
+The installation of the environment will take a few minutes as we need to download the Debian-based EASE image and provision it. Once done, EASE is ready to use and you can proceed to attach external USB Wi-Fi adapter(s).
 
 ## Attaching External USB Adapters to EASE
 
