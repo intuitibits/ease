@@ -26,7 +26,7 @@
 [ -e wifiexplorer-sensor/wifiexplorer-sensor.py ] || (\
   git clone https://github.com/intuitibits/wifiexplorer-sensor.git > /dev/null 2>&1
 ) && \
-cd wifiexplorer-sensor
+cd wifiexplorer-sensor &&
 git pull && install -p -m 755 wifiexplorer-sensor /usr/local/bin/wifiexplorer-sensor
 cd /home/vagrant
 
@@ -35,9 +35,14 @@ install -p -m 755 ease.py /usr/local/bin/ease
 install -p -m 755 ease /etc/init.d/ease
 update-rc.d ease defaults
 systemctl daemon-reload
-rm -f ease*
 systemctl stop ease.service
 killall wifiexplorer-sensor > /dev/null 2>&1
 systemctl start ease.service
+
+# create ease user
+id ease &> /dev/null ||
+adduser --gecos "" --disabled-password ease &&
+chpasswd <<<"ease:ease" &&
+usermod -aG sudo ease
 
 echo "Done."
