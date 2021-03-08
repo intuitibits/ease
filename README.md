@@ -65,7 +65,9 @@ Airtool 2 automatically displays EASE as a remote sensor after at least one adap
 
 ![Airtool 2's Menu](../master/images/airtool_menu.png "Airtool 2's Menu")
 
-When you choose the EASE option in Airtool 2, you must specify the adapter used for capturing. The first adapter connected to the EASE VM is named ``wlan0``, the second adapter is named ``wlan1``, and so on. If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
+When you choose the EASE option in Airtool 2, you must specify the adapter used for capturing. The first adapter connected to the EASE VM is named ``wlan0``, the second adapter is named ``wlan1``, and so on. 
+
+If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
 
 ![Airtool 2's Multi-Source Capture](../master/images/airtool_multi_source_capture.png "Airtool 2's Multi-Source Capture")
 
