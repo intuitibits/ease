@@ -1,14 +1,14 @@
 # External Adapter Support Environment
 
-The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro](https://www.adriangranados.com/apps/wifi-explorer) to use certain external USB adapters for Wi-Fi scanning in macOS. Adapters must be Linux-compatible and support monitor mode.
+The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro 3](https://www.intuitibits.com/products/wifi-explorer-pro) and [Airtool 2](https://www.intuitibits.com/products/airtool) to use external USB adapters for Wi-Fi scanning and packet capturing in macOS. Adapters must be Linux-compatible and support monitor mode.
 
-EASE is basically a lightweight Debian VM that's been customized to leverage the [remote sensor](https://github.com/adriangranados/wifiexplorer-sensor) functionality to automatically configure an external Wi-Fi adapter as a pseudo-local sensor. These pseudo-local sensors are listed in WiFi Explorer Pro separately from remote sensors, but they work in the same manner. 
+EASE is a custom, lightweight Debian VM that leverages the WiFi Explorer Pro 3's [remote sensor](https://github.com/intuitibits/wifiexplorer-sensor) functionality to automatically configure an external Wi-Fi adapter as a pseudo-local sensor. These pseudo-local sensors are listed in WiFi Explorer Pro 3 separately from remote sensors, but they work in the same manner. Airtool 2 can also use the external adapters for Wi-Fi packet capturing, including packet captures on different channels simulatenously using multiple external adapters.
 
-EASE supports multiple adapters and the installation is fairly straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning.
+Installing EASE is fairly straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning. Also, if at least one adapter is connected to the EASE VM, Airtool 2 will automatically show EASE as an available local sensor that can be used for packet capturing.
 
-## Supported External Adapters
+## Supported external adapters
 
-EASE can work with Linux-compatible external USB adapters that support monitor mode, however, only a few adapters have been tested:
+EASE can work with Linux-compatible external USB adapters that support monitor mode, for example:
 
 * [ASUS USB-N53](https://www.amazon.com/Asus-Wireless-N-Graphical-Interface-USB-N53/dp/B005SAKW9G/ref=sr_1_1?ie=UTF8&qid=1515551234&sr=8-1&keywords=asus+usb+n53)
 * [ALFA AWUS051NH 802.11a/b/g/n](https://www.amazon.com/Alfa-AWUS051NH-Wireless-Network-9dBi/dp/B003YH1X48/ref=sr_1_1?ie=UTF8&qid=1515526895&sr=8-1&keywords=AWUS051NH)
@@ -20,7 +20,7 @@ EASE can work with Linux-compatible external USB adapters that support monitor m
 * [Odroid Wi-Fi Module 5](https://ameridroid.com/products/wifi-module-5) - Realtek RTL8812AU
 * [TP-Link 802.11b/g/n TL-WN272N](https://www.amazon.com/TP-Link-Wireless-Adapter-150Mbps-TL-WN727N/dp/B001WU2N1G/ref=sr_1_1?ie=UTF8&qid=1515706464&sr=8-1&keywords=tp-link+tl-wn727n)
 
-Other adapters using the same driver/chipset should work fine. If your device works in Linux, supports monitor mode but cannot be used with EASE, [contact me](mailto:support@adriangranados.com).
+Other adapters using the same driver/chipset should work fine. If your device works in Linux, supports monitor mode but cannot be used with EASE, [contact us](https://www.intuitibits.com/contact).
 
 ## Installation
 
@@ -31,14 +31,14 @@ xcode-select --install
 ```
 3. Install the support environment:
 ```bash
-git clone https://github.com/adriangranados/ease.git
+git clone https://github.com/intuitibits/ease.git
 cd ease
 vagrant up
 ```
 
-The installation of the environment will take a few minutes as we need to download the Debian-based EASE image and provision it. Once done, EASE is ready to use and you can proceed to attach external USB Wi-Fi adapter(s).
+The installation of the environment will take a few minutes as the custom Debian-based EASE VM is downloaded and provisioned. Once done, EASE is ready to be used and you can proceed to attach the external USB Wi-Fi adapter(s).
 
-## Attaching External USB Adapters to EASE
+## Attaching external adapters to EASE
 
 External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's USB Device Filters_ we can configure the environment so that every time you plug in the adapter to the USB port in your computer, the adapter is automatically connected to the EASE VM.
 
@@ -50,15 +50,19 @@ External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's 
 
 ![USB Device Filters](../master/images/usb-device-filters.png "USB Device Filters")
 
-The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro. Repeat the steps above for every adapter you want to use with EASE.
+The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro 3. In Airtool 2, the adapter can now be used for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
 
-## Using External USB Adapters with WiFi Explorer Pro
+## Using external adapters with WiFi Explorer Pro 3
 
 Once you have installed EASE and configured the USB device filters to automatically connect the external adapters to the EASE VM, you can choose the adapter from the _Scan Mode_ menu in the WiFi Explorer Pro's toolbar.
 
 ![WiFi Explorer Pro's Toolbar](../master/images/wifiexplorerpro-toolbar.png "WiFi Explorer Pro's Toolbar")
 
-## Known Issues
+## Using external adapters with Airtool 2
+
+Airtool 2 automatically displays EASE as a remote sensor after at least one adapter is attached to the VM. When you choose the EASE option in Airtoo 2, you must specify the adapter that will be used for capturing. The first adapter connected to the VM is named ``wlan0``, the second adapter is named ``wlan1``, and so on. If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
+
+## Known issues
 
 ### Noise measurements
 It appears none of the adapters tested with EASE report noise values due to limitations of the driver. In order to produce other metrics, such as SNR, WiFi Explorer Pro will use a default noise floor of -96 dBm.
@@ -90,7 +94,7 @@ Adapters that require the ath9k_htc driver for the Atheros AR9271 chip (e.g. ALF
 
 ## Troubleshooting
 
-If the adapter doesn't appear in WiFi Explorer Pro:
+If the adapter doesn't appear in WiFi Explorer Pro 3 or EASE is not listed as a sensor in Airtool 2:
 * Make sure you have unplugged and plugged back in the adapter after adding the USB device filter in VirtualBox.
 * Make sure the EASE VM is running. If the computer went to sleep, VirtualBox will pause the VM and save the VM state. You can check the status of the VM in VirtualBox or by using the Vagrant CLI.
     ```bash
@@ -108,4 +112,4 @@ If the adapter doesn't appear in WiFi Explorer Pro:
     vagrant reload
     ```
 
-If the adapter still doesn't appear in WiFi Explorer Pro, [contact me](mailto:support@adriangranados.com).
+If the adapter still doesn't appear in WiFi Explorer Pro 3 or Airtool 2, [contact us](https://www.intuitibits.com/contact).
