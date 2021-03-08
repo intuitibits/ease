@@ -1,8 +1,8 @@
 # External Adapter Support Environment
 
-The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro 3](https://www.intuitibits.com/products/wifi-explorer-pro) and [Airtool 2](https://www.intuitibits.com/products/airtool) to use external USB adapters for Wi-Fi scanning and packet capturing in macOS. Adapters must be Linux-compatible and support monitor mode.
+The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro](https://www.intuitibits.com/products/wifi-explorer-pro) and [Airtool 2](https://www.intuitibits.com/products/airtool) to use external USB adapters for Wi-Fi scanning and packet capturing in macOS. Adapters must be Linux-compatible and support monitor mode.
 
-EASE is a custom, lightweight Debian VM that leverages the WiFi Explorer Pro 3's [remote sensor](https://github.com/intuitibits/wifiexplorer-sensor) functionality to configure an external Wi-Fi adapter as a pseudo-local sensor automatically. These pseudo-local sensors are listed in WiFi Explorer Pro 3 separately from remote sensors, but they work in the same manner. Airtool 2 can also use the external adapters for Wi-Fi packet capturing, including packet captures on different channels simultaneously using multiple external adapters.
+EASE is a custom, lightweight Debian VM that leverages the WiFi Explorer Pro's [remote sensor](https://github.com/intuitibits/wifiexplorer-sensor) functionality to configure an external Wi-Fi adapter as a pseudo-local sensor automatically. These pseudo-local sensors are listed in WiFi Explorer Pro separately from remote sensors, but they work in the same manner. Airtool 2 can also use the external adapters for Wi-Fi packet capturing, including packet captures on different channels simultaneously using multiple external adapters.
 
 Installing EASE is relatively straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM, and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning. Also, if at least one adapter is connected to the EASE VM, Airtool 2 will automatically show EASE as an available local sensor that can be used for packet capturing.
 
@@ -51,9 +51,9 @@ External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's 
 
 ![USB Device Filters](../master/images/usb-device-filters.png "USB Device Filters")
 
-The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro 3. In Airtool 2, you can now use the adapter for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
+The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro. In Airtool 2, you can now use the adapter for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
 
-## Using external adapters with WiFi Explorer Pro 3
+## Using external adapters with WiFi Explorer Pro
 
 Once you have installed EASE and configured the USB device filters to automatically connect the external adapters to the EASE VM, you can choose the adapter from the _Scan Mode_ menu in the WiFi Explorer Pro's toolbar.
 
@@ -97,7 +97,7 @@ Adapters that require the ath9k_htc driver for the Atheros AR9271 chip (e.g. ALF
 
 ## Troubleshooting
 
-If the adapter doesn't appear in WiFi Explorer Pro 3 or EASE is not listed as a sensor in Airtool 2:
+If the adapter doesn't appear in WiFi Explorer Pro or EASE is not listed as a sensor in Airtool 2:
 * Make sure you have unplugged and plugged back in the adapter after adding the USB device filter in VirtualBox.
 * Make sure the EASE VM is running. If the computer went to sleep, VirtualBox will pause the VM and save the VM state. You can check the status of the VM in VirtualBox or by using the Vagrant CLI.
     ```bash
@@ -115,4 +115,4 @@ If the adapter doesn't appear in WiFi Explorer Pro 3 or EASE is not listed as a 
     vagrant reload
     ```
 
-If the adapter still doesn't appear in WiFi Explorer Pro 3 or Airtool 2, [contact us](https://www.intuitibits.com/contact).
+If the adapter still doesn't appear in WiFi Explorer Pro or Airtool 2, [contact us](https://www.intuitibits.com/contact).
