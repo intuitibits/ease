@@ -37,11 +37,11 @@ cd ease
 vagrant up
 ```
 
-The installation of the environment will take a few minutes as the custom Debian-based EASE VM is downloaded and provisioned. Once done, EASE is ready to be used and you can proceed to attach the external USB Wi-Fi adapter(s).
+The installation of the environment will take a few minutes as the custom Debian-based EASE VM is downloaded and provisioned. Once done, EASE is ready to be used, and you can proceed to attach the external USB Wi-Fi adapter(s).
 
 ## Attaching external adapters to EASE
 
-External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's USB Device Filters_ we can configure the environment so that every time you plug in the adapter to the USB port in your computer, the adapter is automatically connected to the EASE VM.
+External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's USB Device Filters_, we can configure the environment so that every time you plug in the adapter to the USB port in your computer, the adapter is automatically connected to the EASE VM.
 
 1. Plug in the adapter to any of the USB ports in your Mac.
 1. Open VirtualBox and select the EASE VM.
@@ -51,7 +51,7 @@ External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's 
 
 ![USB Device Filters](../master/images/usb-device-filters.png "USB Device Filters")
 
-The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro 3. In Airtool 2, the adapter can now be used for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
+The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro 3. In Airtool 2, you can now use the adapter for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
 
 ## Using external adapters with WiFi Explorer Pro 3
 
