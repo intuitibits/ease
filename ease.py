@@ -4,7 +4,7 @@
 # External Adapter Support Environment (EASE)
 # Version 4.0
 #
-# Copyright (c) 2019 Adrian Granados. All rights reserved.
+# Copyright (c) 2020 Intuitibits LLC. All rights reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
