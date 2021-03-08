@@ -49,7 +49,7 @@ External USB adapters need to be _attached_ to the EASE VM. Using _VirtualBox's 
 1. Add a new USB filter by clicking the icon with the _+_ sign and choosing the adapter you just plugged in.
 1. Click OK, then **unplug and plug back in the adapter.**
 
-![USB Device Filters](../master/images/usb-device-filters.png "USB Device Filters")
+![USB Device Filters](../master/images/usb_device_filters.png "USB Device Filters")
 
 The adapter will be automatically connected to the EASE VM and made available for Wi-Fi scanning in WiFi Explorer Pro. In Airtool 2, you can now use the adapter for capturing when choosing EASE from the list of sensors. Repeat the steps above for every adapter you want to use with EASE.
 
@@ -57,15 +57,19 @@ The adapter will be automatically connected to the EASE VM and made available fo
 
 Once you have installed EASE and configured the USB device filters to automatically connect the external adapters to the EASE VM, you can choose the adapter from the _Scan Mode_ menu in the WiFi Explorer Pro's toolbar.
 
-![WiFi Explorer Pro's Toolbar](../master/images/wifiexplorerpro-toolbar.png "WiFi Explorer Pro's Toolbar")
+![WiFi Explorer Pro's Toolbar](../master/images/wifiexplorerpro_toolbar.png "WiFi Explorer Pro's Toolbar")
 
 ## Using external adapters with Airtool 2
 
-Airtool 2 automatically displays EASE as a remote sensor after at least one adapter is attached to the VM. When you choose the EASE option in Airtool 2, you must specify the adapter that will be used for capturing. 
+Airtool 2 automatically displays EASE as a remote sensor after at least one adapter is attached to the VM.
 
-![Airtool 2's Menu](../master/images/airtool-menu.png "Airtool 2's Menu")
+![Airtool 2's Menu](../master/images/airtool_menu.png "Airtool 2's Menu")
 
-The first adapter connected to the EASE VM is named ``wlan0``, the second adapter is named ``wlan1``, and so on. If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
+When you choose the EASE option in Airtool 2, you must specify the adapter used for capturing. The first adapter connected to the EASE VM is named ``wlan0``, the second adapter is named ``wlan1``, and so on. 
+
+If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
+
+![Airtool 2's Multi-Source Capture](../master/images/airtool_multi_source_capture.png "Airtool 2's Multi-Source Capture")
 
 ## Known issues
 
