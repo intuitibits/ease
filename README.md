@@ -115,4 +115,4 @@ If the adapter doesn't appear in WiFi Explorer Pro or EASE is not listed as a se
     vagrant reload
     ```
 
-If the adapter still doesn't appear in WiFi Explorer Pro or Airtool 2, [contact us](https://www.intuitibits.com/contact).
+If the adapter still doesn't appear in WiFi Explorer Pro or EASE is not an option in Airtool 2, [contact us](https://www.intuitibits.com/contact).
