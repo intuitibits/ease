@@ -2,9 +2,9 @@
 
 The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro 3](https://www.intuitibits.com/products/wifi-explorer-pro) and [Airtool 2](https://www.intuitibits.com/products/airtool) to use external USB adapters for Wi-Fi scanning and packet capturing in macOS. Adapters must be Linux-compatible and support monitor mode.
 
-EASE is a custom, lightweight Debian VM that leverages the WiFi Explorer Pro 3's [remote sensor](https://github.com/intuitibits/wifiexplorer-sensor) functionality to automatically configure an external Wi-Fi adapter as a pseudo-local sensor. These pseudo-local sensors are listed in WiFi Explorer Pro 3 separately from remote sensors, but they work in the same manner. Airtool 2 can also use the external adapters for Wi-Fi packet capturing, including packet captures on different channels simulatenously using multiple external adapters.
+EASE is a custom, lightweight Debian VM that leverages the WiFi Explorer Pro 3's [remote sensor](https://github.com/intuitibits/wifiexplorer-sensor) functionality to configure an external Wi-Fi adapter as a pseudo-local sensor automatically. These pseudo-local sensors are listed in WiFi Explorer Pro 3 separately from remote sensors, but they work in the same manner. Airtool 2 can also use the external adapters for Wi-Fi packet capturing, including packet captures on different channels simultaneously using multiple external adapters.
 
-Installing EASE is fairly straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning. Also, if at least one adapter is connected to the EASE VM, Airtool 2 will automatically show EASE as an available local sensor that can be used for packet capturing.
+Installing EASE is relatively straightforward using Vagrant. Once installed, you only need to _attach_ the adapter to the EASE VM, and it will automatically show up in WiFi Explorer Pro where you can choose it for scanning. Also, if at least one adapter is connected to the EASE VM, Airtool 2 will automatically show EASE as an available local sensor that can be used for packet capturing.
 
 ## Supported external adapters
 
@@ -16,6 +16,7 @@ EASE can work with Linux-compatible external USB adapters that support monitor m
 * [COMFAST CF-912AC](https://www.amazon.com/Comfast-CF-912AC-1200Mbps-802-11ac-Wireless/dp/B00W37XPPK) - Realtek RTL8812AU
 * [Edimax EW-7822UAC AC1200](https://www.amazon.com/gp/product/B00BXAXO7C/ref=ppx_yo_dt_b_asin_title_o01__o00_s00?ie=UTF8&psc=1) - Realtek RTL8812AU 
 * [Edimax EW-7833UAC AC1750](https://www.amazon.com/gp/product/B01G51FBF6/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1) - Realtek RTL8814AU
+* [MediaTek MT7612U 1200Mbps Dual Band](https://www.mediatek.com/products/broadbandWifi/mt7612u) - MediaTek MT7612U
 * [Odroid Wi-Fi Module 4](https://ameridroid.com/products/wifi-module-4) - MediaTek (Ralink) RT5572N
 * [Odroid Wi-Fi Module 5](https://ameridroid.com/products/wifi-module-5) - Realtek RTL8812AU
 * [TP-Link 802.11b/g/n TL-WN272N](https://www.amazon.com/TP-Link-Wireless-Adapter-150Mbps-TL-WN727N/dp/B001WU2N1G/ref=sr_1_1?ie=UTF8&qid=1515706464&sr=8-1&keywords=tp-link+tl-wn727n)
