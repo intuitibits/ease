@@ -37,6 +37,16 @@ cd ease
 vagrant up
 ```
 
+## Updating EASE
+
+We use a custom Vagrant box for the EASE VM that has all the necessary wireless drivers already installed, so provisioning the VM is easier and faster. When we update the custom box, you need to re-create the EASE VM to get the latest changes:
+
+```bash
+vagrant destroy
+vagrant box update
+vagrant up
+```
+
 The installation of the environment will take a few minutes as the custom Debian-based EASE VM is downloaded and provisioned. Once done, EASE is ready to be used, and you can proceed to attach the external USB Wi-Fi adapter(s).
 
 ## Attaching external adapters to EASE
@@ -70,16 +80,6 @@ When you choose the EASE option in Airtool 2, you must specify the adapter used 
 If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
 
 ![Airtool 2's Multi-Source Capture](../master/images/airtool_multi_source_capture.png "Airtool 2's Multi-Source Capture")
-
-## Updating EASE
-
-We use a custom Vagrant box for the EASE VM that has all the necessary wireless drivers already installed, so provisioning the VM is easier and faster. When we update the custom box, you need to re-create the EASE VM to get the latest changes:
-
-```bash
-vagrant destroy
-vagrant box upate
-vagrant up
-```
 
 ## Known issues
 
