@@ -41,13 +41,15 @@ The installation of the environment will take a few minutes as the custom Debian
 
 ## Updating EASE
 
-We use a [custom Vagrant box](https://app.vagrantup.com/intuitibits/boxes/ease) for the EASE VM that has all the necessary wireless drivers already installed, so provisioning the VM is easier and faster. Every time you start EASE using the `vagrant up` command, Vagrant will check if there's a new version of the custom box. If a new version is found, you can update the box and re-create the EASE VM to get the latest changes by typing:
+We use a [custom Vagrant box](https://app.vagrantup.com/intuitibits/boxes/ease) for the EASE VM that has all the necessary wireless drivers already installed, so provisioning the VM is easier and faster. Every time you start EASE using the `vagrant up` command, Vagrant checks if there's a new version of the custom box. If a new version is found, you can update the box and re-create the EASE VM to get the latest changes by typing:
 
 ```bash
 vagrant destroy
 vagrant box update
 vagrant up
 ```
+
+**Important:** Please note that you will lose any customizations you may have made to the EASE VM, so do not update unless you want to keep your changes.
 
 ## Attaching external adapters to EASE
 
