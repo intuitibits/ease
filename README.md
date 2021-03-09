@@ -23,7 +23,7 @@ EASE can work with Linux-compatible external USB adapters that support monitor m
 
 Other adapters using the same driver/chipset should work fine. If your device works in Linux, supports monitor mode but cannot be used with EASE, [contact us](https://www.intuitibits.com/contact).
 
-## Installation
+## Installing EASE
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and the [VirtualBox Extension Pack](https://www.virtualbox.org/wiki/Downloads) (required to enable USB support in VirtualBox). If you have any of these components already installed, please make sure you're running the latest version.
 2. If __git__ is not installed, type:
@@ -70,6 +70,16 @@ When you choose the EASE option in Airtool 2, you must specify the adapter used 
 If you connect more than one adapter to EASE, you can also choose the _Multi-Source Capture_ option in Airtool 2 to capture on multiple channels simultaneously.
 
 ![Airtool 2's Multi-Source Capture](../master/images/airtool_multi_source_capture.png "Airtool 2's Multi-Source Capture")
+
+## Updating EASE
+
+We use a custom Vagrant box for the EASE VM that has all the necessary wireless drivers already installed, so provisioning the VM is easier and faster. When we update the custom box, you need to re-create the EASE VM to get the latest changes:
+
+```bash
+vagrant destroy
+vagrant box upate
+vagrant up
+```
 
 ## Known issues
 
