@@ -49,7 +49,7 @@ vagrant box update
 vagrant up
 ```
 
-**Important:** Please note that you will lose any customizations you may have made to the EASE VM, so do not update unless you want to keep your changes.
+**Important:** Please note that you will lose any customizations you may have made to the EASE VM by re-creating it using the steps above. So, do not update unless you want to keep your changes.
 
 ## Attaching external adapters to EASE
 
