@@ -45,4 +45,8 @@ adduser --gecos "" --disabled-password ease &&
 chpasswd <<<"ease:ease" &&
 usermod -aG sudo ease
 
+# set up password-less sudo for the ease user
+echo 'ease ALL=(ALL) NOPASSWD:ALL' >/etc/sudoers.d/ease;
+chmod 440 /etc/sudoers.d/ease;
+
 echo "Done."
