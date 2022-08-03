@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.provider "virtualbox" do |vb|
     vb.name = "EASE"
-    vb.memory = "512"
+    vb.memory = "1024"
     vb.cpus = "2"
     vb.default_nic_type = "virtio"
     vb.customize ["modifyvm", :id, "--usb", "on"]
