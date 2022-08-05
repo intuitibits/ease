@@ -2,7 +2,7 @@
 #
 # ease.py
 # External Adapter Support Environment (EASE)
-# Version 4.0
+# Version 5.0
 #
 # Copyright (c) 2021 Intuitibits LLC. All rights reserved.
 #
@@ -32,7 +32,6 @@ from os import geteuid, devnull
 from sys import exit
 from threading import Thread
 from pprint import pprint
-from collections  import OrderedDict
 
 app = Flask(__name__)
 
@@ -44,7 +43,7 @@ def find_adapters(json_data, json_child_data):
     if type(json_child_data) is list:
         for item in json_child_data:
             find_adapters(json_data, item)
-    elif type(json_child_data) is OrderedDict:
+    elif type(json_child_data) is dict:
         for item, value in json_child_data.items():
             if item == 'node':
                 find_adapters(json_data, value)
@@ -62,18 +61,12 @@ def purge_adapters():
         if now - adapter['last_seen'] > 2.0:
             print("Removing %s" % adapter)
             adapters.remove(adapter)
-            # Kill wifiexplorer-sensor for this adapter
-            for proc in psutil.process_iter():
-                cmdline = proc.cmdline()
-                if len(cmdline) == 4:
-                    if cmdline[1] == '/usr/local/bin/wifiexplorer-sensor' and cmdline[2] == adapter['interface'] and cmdline[3] == str(adapter['port']):
-                        proc.kill()
 
 def add_adapter(json_data, businfo, interface):
     if type(json_data) is list:
         for item in json_data:
             add_adapter(item, businfo, interface)
-    elif type(json_data) is OrderedDict:
+    elif type(json_data) is dict:
         for item, value in json_data.items():
             if item == 'node':
                 add_adapter(value, businfo, interface)
@@ -81,18 +74,15 @@ def add_adapter(json_data, businfo, interface):
                 if json_data['businfo'] == businfo:
                     name = json_data['vendor'] + ' ' + json_data['product']
                     tag = 2000 + int(interface.replace('wlan', ''))
-                    port = 26700 + int(interface.replace('wlan', ''))
 
                     found = update_adapter(businfo)
                 
                     if not found:
                         try:
-                            subprocess.Popen(["/usr/local/bin/wifiexplorer-sensor", interface, str(port)], stdout=FNULL)
                             adapter = {
                                 'name': name,
                                 'businfo': businfo,
                                 'interface': interface,
-                                'port': port,
                                 'tag': tag,
                                 'last_seen': time.time()
                             }
