@@ -1,4 +1,4 @@
-# External Adapter Support Environment
+# External Adapter Support Environment [DEPRECATED]
 
 The External Adapter Support Environment (EASE) allows [WiFi Explorer Pro](https://www.intuitibits.com/products/wifi-explorer-pro) and [Airtool 2](https://www.intuitibits.com/products/airtool) to use external USB adapters for Wi-Fi scanning and packet capturing in macOS. Adapters must be Linux-compatible and support monitor mode.
 
